@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Card, Image } from 'react-bootstrap';
+import SearchBar from './components/SearchBar';
+import Details from './components/Details';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null,
+    };
+    this.handleData = this.handleData.bind(this);
+  }
 
-export default App;
+  handleData(response) {
+    this.setState({ data: response });
+  }
+
+  render() {
+    const { data } = this.state;
+    return (
+      <div className='position-absolute container-fluid h-100'>
+        <Card className='pokedex anim-fade-in shadow'>
+          <Card.Header className='border-0' style={{ backgroundColor: '#D32F2F', borderTopLeftRadius: 15, borderTopRightRadius: 15 }}>
+            <Image
+              src='https://ianars.github.io/Pok-dex/images/pokedeex.png'
+              className='w-100'
+            />
+          </Card.Header>
+          <Card.Body>
+            <SearchBar onPokemonSearch={this.handleData}></SearchBar>
+            <Details pokemon={data}></Details>
+          </Card.Body>
+        </Card>
+      </div>
+    );
+  }
+}
