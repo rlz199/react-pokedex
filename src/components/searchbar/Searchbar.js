@@ -9,9 +9,9 @@ import {
 	Spinner
 } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
-import PokemonService from '../services/PokemonService';
+import PokemonService from '../../services/PokemonService';
 
-export default class SearchBar extends React.Component {
+export default class Searchbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -54,9 +54,9 @@ export default class SearchBar extends React.Component {
           <Col>
             <InputGroup className='mb-3'>
               <FormControl
-							autoFocus={true}
+                data-testid="filter"
+							  autoFocus={true}
 								placeholder="Pokemon's name"
-								value={name}
                 disabled={loading}
                 onInput={(e) => this.handleInputChange(e)}
                 onKeyPress={(e) => {

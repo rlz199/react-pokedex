@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Image } from 'react-bootstrap';
-import SearchBar from './components/SearchBar';
-import Details from './components/Details';
+import Searchbar from './components/searchbar/Searchbar';
+import Details from './components/details/Details';
 
 import './App.css';
 
@@ -30,7 +30,7 @@ export default class App extends React.Component {
             />
           </Card.Header>
           <Card.Body>
-            <SearchBar onPokemonSearch={this.handleData}></SearchBar>
+            <Searchbar onPokemonSearch={this.handleData}></Searchbar>
             <Details pokemon={data}></Details>
           </Card.Body>
         </Card>
