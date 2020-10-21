@@ -33,7 +33,7 @@ export default class Searchbar extends React.Component {
     }
     this.setState({ loading: true });
     try {
-      const response = await PokemonService.getPokemonByName(
+      const response = await PokemonService.getPokemon(
         name.toLowerCase()
       );
       if (response) {
